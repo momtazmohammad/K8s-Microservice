@@ -11,10 +11,16 @@ spec:
       http:
         paths:
           - path: /auth/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: auth-svc
-              servicePort: 3001
+              service:
+                name: auth-svc
+                port:
+                  number: 3001
           - path: /products/?(.*)
+            pathType: Prefix
             backend:
-              serviceName: product-svc
-              servicePort: 3003
+              service:
+                name: product-svc
+                port:
+                  number: 3003
