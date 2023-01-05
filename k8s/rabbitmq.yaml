@@ -1,9 +1,8 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: rabbitmq
 spec:
-  serviceName: rabbitmq
   replicas: 1
   selector:
     matchLabels:
@@ -16,29 +15,6 @@ spec:
       containers:
         - name: rabbitmq
           image: rabbitmq:3.11.5-management-alpine
-          ports:
-            - name: http
-              protocol: TCP
-              containerPort: 15672
-            - name: amqp
-              protocol: TCP
-              containerPort: 5672
-          livenessProbe:
-            exec:
-              command:
-                - "rabbitmq-diagnostics"
-                - "ping"
-            initailDelaySeconds: 10
-            periodSeconds: 30
-            timeoutSeconds: 15
-          readinessProbe:
-            exec:
-              command:
-                - "rabbitmq-diagnostics"
-                - "check_port_connectivity"
-            initailDelaySeconds: 10
-            periodSeconds: 30
-            timeoutSeconds: 15
 ---
 apiVersion: v1
 kind: Service
