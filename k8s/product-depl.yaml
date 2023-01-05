@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: product
-          image: momtaz/product
+          image: momtaz/product:1-alpine
           env:
             - name: PORT
               value: "3003"

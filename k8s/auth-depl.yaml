@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: momtaz/auth
+          image: momtaz/auth:1-alpine
           env:
             - name: PORT
               value: "3001"
