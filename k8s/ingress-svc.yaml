@@ -5,10 +5,10 @@ metadata:
   namespace: sale
   #namespace: default
   annotations:
-    kubernetes.io/ingress.class: nginx
+    #kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  #ingressClassName: nginx
+  ingressClassName: nginx
   rules:
     - host: sale.com
       http:
