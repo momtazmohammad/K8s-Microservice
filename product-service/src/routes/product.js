@@ -14,6 +14,10 @@ async function connectToRabbitMQ() {
 }
 connectToRabbitMQ();
 
+router.get("/",async (req,res)=>{
+  const products=await Product.find({});
+  return res.status(200).json({products})
+})
 // Create a new product
 router.post("/", auth, async (req, res) => {
   const { name, price, description } = req.body;
