@@ -65,6 +65,7 @@ kubernetes:
 -----------
 Kubernetes is a system for automating deployment, scaling, and management. In short, the entire orchestration of containerized applications.
 docker desktop , minikube , kind ,kubeadm , containerd  , ...
+https://kubernetes.io/docs/concepts/overview/components/
 cluster , node , ...
 kube-system name space
 
@@ -76,8 +77,12 @@ kubectl port-forward testpod 5000:3130
 
 kubectl apply -f testpod.yaml //create or apply
 
-diference between deployment and pod
-c
+difference between deployment and pod:
+A deployment is responsible for keeping a set of pods running. 
+A service is responsible for enabling network access to a set of pods.
+We could use a deployment without a service to keep a set of identical pods running in the Kubernetes cluster. 
+The deployment could be scaled up and down and pods could be replicated.
+
 kubectl port-forward deployment/[deployment-name] 8080:80 
 
 services is single point of one or more pods // pods ip addresses will be changed if pod is destroy and create a new one , so we can't rely on ip address
@@ -117,9 +122,7 @@ kubectl logs testpod
 
 Steps to build sample microservice project
 ------------------------------------------
-CQRS : Command Query Responsibility Segregation pattern
 
-project diagram and structure
 docker build --tag  momtaz/auth:1-alpine .
 kubectl apply -f namespace-depl.yaml
 docker pull mongo
